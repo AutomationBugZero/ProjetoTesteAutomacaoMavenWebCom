@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="suite">
+ <test name="domain">
+    <groups>
+        <run>
+            <include name="domain"/>
+        </run>
+    </groups>
+    <classes>
+        <class name="br.rubens.teste.SuiteTeste"></class>
+        <class name="br.rubens.teste.VerifyWebComLogin"></class>
+        <class name="br.rubens.teste.VerifyWebComCadastroCliente"></class>
+    </classes>
+ </test>
+</suite>
