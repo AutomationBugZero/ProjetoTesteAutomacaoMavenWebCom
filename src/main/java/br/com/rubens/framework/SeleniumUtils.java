@@ -1,7 +1,9 @@
 package br.com.rubens.framework;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Platform;
@@ -50,6 +52,9 @@ public class SeleniumUtils {
 
 	 */
 	public WebDriver setUpDriver(int browserNumber, int waitPageSeconds, int waitElementSeconds) {
+		
+		InetAddress address;
+			
 		DesiredCapabilities cap = null;
 		if (SeleniumUtils.DRIVER == null) {
 			WebDriver driver = null;
@@ -61,8 +66,9 @@ public class SeleniumUtils {
 				cap.setBrowserName("internet explorer");
 				cap.setPlatform(Platform.WINDOWS);			
 				try {
-					driver = new RemoteWebDriver(new URL("http://localhost:6577/wd/hub"),cap);
-				} catch (MalformedURLException e) {
+					address = InetAddress.getLocalHost();
+					driver = new RemoteWebDriver(new URL("http://"+address.getHostAddress()+":6577/wd/hub"),cap);
+				} catch (MalformedURLException | UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -75,8 +81,9 @@ public class SeleniumUtils {
 				cap.setBrowserName("chrome");
 				cap.setPlatform(Platform.WINDOWS);			
 				try {
-					driver = new RemoteWebDriver(new URL("http://localhost:6577/wd/hub"),cap);
-				} catch (MalformedURLException e) {
+					address = InetAddress.getLocalHost();
+					driver = new RemoteWebDriver(new URL("http://"+address.getHostAddress()+":6577/wd/hub"),cap);
+				} catch (MalformedURLException | UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -89,8 +96,9 @@ public class SeleniumUtils {
 				cap.setPlatform(Platform.WINDOWS);	
 				//driver = new FirefoxDriver(/* profile */);
 				try {
-					driver = new RemoteWebDriver(new URL("http://localhost:6577/wd/hub"),cap);
-				} catch (MalformedURLException e) {
+					address = InetAddress.getLocalHost();
+					driver = new RemoteWebDriver(new URL("http://"+address.getHostAddress()+":6577/wd/hub"),cap);
+				} catch (MalformedURLException | UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
