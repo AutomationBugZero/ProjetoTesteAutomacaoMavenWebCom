@@ -1,10 +1,13 @@
 package br.com.rubens.interfaces;
 
+import java.net.MalformedURLException;
+
 import org.openqa.selenium.WebDriver;
+
 import br.com.rubens.framework.SeleniumUtils;
 
 
-public interface ISeleniumUtils {
+public interface ISeleniumUtils  {
 	public final boolean isProductionEnvironment = true;
 	
 	public final int browserNumber = 1;

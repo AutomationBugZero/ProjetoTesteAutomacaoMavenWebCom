@@ -48,6 +48,18 @@
 
 	<dependencies>
 	
+	    <dependency>
+			<groupId>com.opera</groupId>
+            <artifactId>operadriver</artifactId>
+            <version>1.5</version>
+            <exclusions>
+                 <exclusion>
+                     <groupId>org.seleniumhq.selenium</groupId>
+                     <artifactId>selenium-remote-driver</artifactId>
+                 </exclusion>
+             </exclusions>
+         </dependency>
+	
 		<dependency>
 		    <groupId>org.uncommons</groupId>
 		    <artifactId>reportng</artifactId>

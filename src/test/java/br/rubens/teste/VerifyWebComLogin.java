@@ -4,6 +4,7 @@
 package br.rubens.teste;
 
 import java.io.IOException;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import br.com.rubens.framework.Util;

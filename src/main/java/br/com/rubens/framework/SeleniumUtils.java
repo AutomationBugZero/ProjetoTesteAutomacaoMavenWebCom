@@ -1,10 +1,16 @@
 package br.com.rubens.framework;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 /**
  * Classe de configura��o utilizada na instancia��o do objeto Webdriver
@@ -41,29 +47,53 @@ public class SeleniumUtils {
 	 *            <p>
 	 * 
 	 * @return A static object to SeleniumUtils.DRIVER protected var.
+
 	 */
 	public WebDriver setUpDriver(int browserNumber, int waitPageSeconds, int waitElementSeconds) {
-
-		Util util = new Util();
-
+		DesiredCapabilities cap = null;
 		if (SeleniumUtils.DRIVER == null) {
 			WebDriver driver = null;
 			if (browserNumber == 1) {
-				// util.killProcess("iexplore.exe");
-				// util.killProcess("IEDriverServer.exe");
 				System.setProperty("webdriver.ie.driver",
 						"./src/test/resources/IEDriverServer.exe");
-				driver = new InternetExplorerDriver();
+				
+				cap=  DesiredCapabilities.internetExplorer();
+				cap.setBrowserName("internet explorer");
+				cap.setPlatform(Platform.WINDOWS);			
+				try {
+					driver = new RemoteWebDriver(new URL("http://localhost:6577/wd/hub"),cap);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else if (browserNumber == 2) {
-				util.killProcess("chrome.exe");
-				util.killProcess("chromedriver.exe");
+
 				System.setProperty("webdriver.chrome.driver",
 						"./src/test/resources/chromedriver.exe");
-				driver = new ChromeDriver();
+				//driver = new ChromeDriver();
+				cap = DesiredCapabilities.chrome();
+				cap.setBrowserName("chrome");
+				cap.setPlatform(Platform.WINDOWS);			
+				try {
+					driver = new RemoteWebDriver(new URL("http://localhost:6577/wd/hub"),cap);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			} else if (browserNumber == 3) {
 				// FirefoxProfile profile = new FirefoxProfile(new
 				// File(profileFirefoxPath));
-				driver = new FirefoxDriver(/* profile */);
+				cap = DesiredCapabilities.firefox();
+				cap.setBrowserName("firefox");
+				cap.setPlatform(Platform.WINDOWS);	
+				//driver = new FirefoxDriver(/* profile */);
+				try {
+					driver = new RemoteWebDriver(new URL("http://localhost:6577/wd/hub"),cap);
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 			driver.manage().window().maximize();
