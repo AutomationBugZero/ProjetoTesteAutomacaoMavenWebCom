@@ -10,7 +10,7 @@ import br.com.rubens.framework.SeleniumUtils;
 public interface ISeleniumUtils  {
 	public final boolean isProductionEnvironment = true;
 	
-	public final int browserNumber = 1;
+	public final int browserNumber = 3;
 	public static int WAIT_ELEMENT_LOAD_SECONDS = 10;
 	
 	public final String email = "qa01@rubens.com.br";
