@@ -3,10 +3,23 @@ package br.com.rubens.framework;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Date;
+
 
 public class Util {
 	
@@ -47,5 +60,66 @@ public class Util {
             err.printStackTrace();  
         }   
     }  
+	/**
+	 * Aguarda por texto de um elemento web e compara para validar se está certo, caso contrario falha o teste
+	 * 
+	 * @author Rubens Lobo
+	 * @param     
+	 *            <b>WebDriver</b> - utilizado para reconhecer a estancia de drive utilizado no teste.
+	 *            <p>
+	 *            <b>textToAppear</b> - String utilizada para passar um texto para comparar com valor do elemento web
+	 *            <p>
+	 *            <b>element</b> - Elemento Web utilizado para comparar as strings
+	 *            <p>
+	 *            <b>timeOut</b> - Valor de time-Out para para validação
+	 *            <p>
+	 * 
+	 */
+	public void waitForTextToAppear(WebDriver newDriver, String textToAppear, WebElement element,int timeOut, String pathEvidencia) 
+	{
+		try{
+			WebDriverWait wait = new WebDriverWait(newDriver,timeOut);
+			wait.until(ExpectedConditions.textToBePresentInElement(element, textToAppear));}
+		catch(Exception e){
+			takeScreenshot(newDriver,pathEvidencia);
+			Assert.fail();
+		}
+	}
+	/**
+	 * Aguarda por um objeto da pagina web, caso não seja apresentado o teste falha.
+	 * 
+	 * @author Rubens Lobo
+	 * @param     
+	 *            <b>WebDriver</b> - utilizado para reconhecer a estancia de drive utilizado no teste.
+	 *            <p>
+	 *            <b>by</b> - objeto que representa um elemento web de uma pagina HTML
+	 *            <p>
+	 * 			  <b>timeOut</b> - Valor de time-Out para para validação
+	 *            <p>
+	 */
+	public void waitForElement(WebDriver newDriver, By by, int timeOut, String pathEvidencia) 
+	{
+		try{
+			WebDriverWait wait = new WebDriverWait(newDriver,timeOut);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+		}
+	   catch(Exception e){
+		   takeScreenshot(newDriver,pathEvidencia);
+			Assert.fail();
+	   }
+	}
+	 /**
+     * Método para capturar screenshot
+     * @param fileName - Nome do arquivo
+     */
+    public void takeScreenshot(WebDriver newDriver, String fileName){
+    	 File scrFile = ((TakesScreenshot)newDriver).getScreenshotAs(OutputType.FILE);
+         Date data = new Date();
+         try {
+             FileUtils.copyFile(scrFile, new File(fileName+ data.getTime()+".jpg"),false);
+         } catch (IOException e) {
+             e.printStackTrace();
+         } 
+    }
 	
 }

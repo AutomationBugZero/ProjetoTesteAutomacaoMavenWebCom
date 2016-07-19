@@ -3,10 +3,15 @@ package br.com.rubens.framework;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -52,50 +57,55 @@ public class SeleniumUtils {
 		DesiredCapabilities cap = null;
 		//Colocar o ip e porta criada na maquina node. esse dados encontra-se tambem no endereço http://localhost:4444/grid/console
 		String nodeUrl = "http://192.168.0.105:5558/wd/hub";
-		File fileDriver = new File(".\\Drivers\\IEDriverServer.exe");
 		
 		if (SeleniumUtils.DRIVER == null) {
-			RemoteWebDriver driver = null;
+			WebDriver driver = null;
 			if (browserNumber == 1) {
 				 
-				System.setProperty("webdriver.ie.driver",fileDriver.getAbsolutePath());				
-				cap = DesiredCapabilities.internetExplorer();
-				cap.setBrowserName("internet explorer");
-				cap.setPlatform(Platform.WINDOWS);			
-				try {
-					driver = new RemoteWebDriver(new URL(nodeUrl),cap); 
-				} catch (MalformedURLException e) {
+				System.setProperty("webdriver.ie.driver","./src/test/resources/IEDriverServer.exe");		
+				driver = new InternetExplorerDriver();
+				
+				
+				
+				//cap = DesiredCapabilities.internetExplorer();
+				//cap.setBrowserName("internet explorer");
+				//cap.setPlatform(Platform.WINDOWS);			
+				//try {
+				//	driver = new RemoteWebDriver(new URL(nodeUrl),cap); 
+				//} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				//	e.printStackTrace();
+				//}
 
 			} else if (browserNumber == 2) {
 
 				System.setProperty("webdriver.chrome.driver","./src/test/resources/chromedriver.exe");
-				//driver = new ChromeDriver();
-				cap = DesiredCapabilities.chrome();
-				cap.setBrowserName("chrome");
-				cap.setPlatform(Platform.VISTA);
-				try {
-					driver = new RemoteWebDriver(new URL(nodeUrl),cap);
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				driver = new ChromeDriver();
+				//cap = DesiredCapabilities.chrome();
+				//cap.setBrowserName("chrome");
+				//cap.setPlatform(Platform.VISTA);
+				//try {
+				//	driver = new RemoteWebDriver(new URL(nodeUrl),cap);
+				//} catch (MalformedURLException e) {
+				//	// TODO Auto-generated catch block
+				//	e.printStackTrace();
+				//}
 				
 			} else if (browserNumber == 3) {
-				// FirefoxProfile profile = new FirefoxProfile(new
-				// File(profileFirefoxPath));	
-				cap = DesiredCapabilities.firefox();
-				cap.setBrowserName("firefox");
-				cap.setPlatform(Platform.VISTA);	
+				
+				
+				driver = new FirefoxDriver(/* profile */);
+				
+				//cap = DesiredCapabilities.firefox();
+				//cap.setBrowserName("firefox");
+				//cap.setPlatform(Platform.VISTA);	
 				//driver = new FirefoxDriver(/* profile */);
-				try {
-					driver = new RemoteWebDriver(new URL(nodeUrl),cap); 
-				} catch (MalformedURLException e) {
+				//try {
+				//	driver = new RemoteWebDriver(new URL(nodeUrl),cap); 
+				//} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				//	e.printStackTrace();
+				//}
 				
 			}
 			driver.manage().window().maximize();

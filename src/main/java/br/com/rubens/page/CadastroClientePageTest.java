@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-public class CadastroClientePageTest {
+import br.com.rubens.interfaces.ISeleniumUtils;
+
+public class CadastroClientePageTest implements ISeleniumUtils{
 	
 	WebDriver driver;
 	
@@ -77,7 +79,7 @@ public class CadastroClientePageTest {
 	public void EfetuarCadastroCliente(String Nome, String Cpf, String Rg, String Endereco, String Bairro, String Cidade, String Estado, String Telefone, String Email, String Observacao) throws InterruptedException
 	{
 		
-		MenuPrincipalPageTest MenuPrincipal=new MenuPrincipalPageTest(driver);
+		MenuPrincipalPageTest MenuPrincipal=new MenuPrincipalPageTest();
 		
 		TypeNome(Nome);
 		Thread.sleep(1000);
