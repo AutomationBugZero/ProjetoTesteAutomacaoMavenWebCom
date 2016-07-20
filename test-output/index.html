@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\guilherme.cutovoi\AppData\Local\Temp\testng-eclipse-907659882\testng-customsuite.xml</span>
+                    <span>C:\Users\guilherme.cutovoi\AppData\Local\Temp\testng-eclipse-408796345\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -127,11 +127,36 @@
                   <a name="VerifyValidLogin">
                   </a> <!-- VerifyValidLogin -->
                   <span class="method-name">VerifyValidLogin</span>
-                  <div class="stack-trace">java.lang.AssertionError: null
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.fail(Assert.java:101)
-	at br.com.rubens.framework.Util.waitForElement(Util.java:108)
-	at br.com.rubens.page.LoginPageTest.LogarPageLogin(LoginPageTest.java:63)
+                  <div class="stack-trace">java.lang.NoClassDefFoundError: org/apache/poi/UnsupportedFileFormatException
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.apache.poi.openxml4j.opc.OPCPackage.create(OPCPackage.java:358)
+	at org.apache.poi.xwpf.usermodel.XWPFDocument.newPackage(XWPFDocument.java:144)
+	at org.apache.poi.xwpf.usermodel.XWPFDocument.&lt;init&gt;(XWPFDocument.java:135)
+	at br.com.rubens.framework.Util.Evidencia(Util.java:150)
+	at br.com.rubens.page.LoginPageTest.LogarPageLogin(LoginPageTest.java:48)
 	at br.rubens.teste.VerifyWebComLogin.VerifyValidLogin(VerifyWebComLogin.java:36)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -157,6 +182,12 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+Caused by: java.lang.ClassNotFoundException: org.apache.poi.UnsupportedFileFormatException
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	... 54 more
 
 </div> <!-- stack-trace -->
                   <em>
@@ -168,7 +199,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\guilherme.cutovoi\AppData\Local\Temp\testng-eclipse-907659882\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\guilherme.cutovoi\AppData\Local\Temp\testng-eclipse-408796345\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -229,12 +260,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'VerifyValidLogin')
 data.setCell(0, 2, 'br.rubens.teste.VerifyWebComLogin')
-data.setCell(0, 3, 10578);
+data.setCell(0, 3, 411);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 seconds</span>
+              <span class="suite-total-time">Total running time: 411 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->

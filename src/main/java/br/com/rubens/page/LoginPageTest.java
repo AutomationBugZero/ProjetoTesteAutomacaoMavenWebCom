@@ -3,18 +3,10 @@
  */
 package br.com.rubens.page;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.ParseException;
-
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
-
 import br.com.rubens.framework.Util;
 import br.com.rubens.interfaces.ISeleniumUtils;
 
@@ -49,14 +41,10 @@ public class LoginPageTest implements ISeleniumUtils {
 		webDriver.findElement(loginButton).click();
 	}
 
-	public void LogarPageLogin(String UserName, String Pass) {
+	public void LogarPageLogin(String UserName, String Pass) throws FileNotFoundException, IOException {
 		Util util=new Util();
-		
-		String data1 = util.GetTime();
-		System.out.println(data1);
-		
 		MenuPrincipalPageTest menu=new MenuPrincipalPageTest();
-		
+			
 
 		LoginPageTest login=new LoginPageTest();			
 		
@@ -66,7 +54,7 @@ public class LoginPageTest implements ISeleniumUtils {
 		login.TypePassword(Pass);
 		login.ClickonLoginButton();
 			
-		util.waitForTextToAppear(webDriver, "Rubens", webDriver.findElement(menu.linkSair),10,"Evidencia","Acesso_Menu_Principal_Erro");
+		util.waitForTextToAppear(webDriver, "Sair", webDriver.findElement(menu.linkSair),10,"Evidencia","Acesso_Menu_Principal_Erro");
 			
 	}	
 }

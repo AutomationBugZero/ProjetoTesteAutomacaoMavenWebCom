@@ -1,8 +1,13 @@
 package br.com.rubens.framework;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -14,11 +19,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class Util {
@@ -116,7 +116,7 @@ public class Util {
     	 File scrFile = ((TakesScreenshot)newDriver).getScreenshotAs(OutputType.FILE);
     	 
          try {
-             FileUtils.copyFile(scrFile, new File(".\\" + pathEvidencia + "\\"  + nameEvidencia + "_"+ GetDate()+"_"+ GetTime()+".jpg"),false);
+             FileUtils.copyFile(scrFile, new File(".\\" + pathEvidencia + "\\"  + nameEvidencia + "_"+ GetDate()+"_"+ GetTime()+".jpg"),true);
          } catch (IOException e) {
              e.printStackTrace();
          } 
@@ -135,5 +135,7 @@ public class Util {
     	Date date = new Date();
     	return dateFormat.format(date).replace(":", "");
     }
+    
+
 	
 }

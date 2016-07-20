@@ -47,7 +47,7 @@
 	</repositories>
 
 	<dependencies>
-	
+			
 	    <dependency>
 			<groupId>com.opera</groupId>
             <artifactId>operadriver</artifactId>
@@ -76,12 +76,6 @@
 		    <groupId>org.apache.stratos</groupId>
 		    <artifactId>guice</artifactId>
 		    <version>3.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.15-beta1</version>
 		</dependency>
 
 		<dependency>
@@ -138,6 +132,24 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.13</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>com.hynnet</groupId>
+    		<artifactId>jacob</artifactId>
+    		<version>1.18</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.autoit</groupId>
+			<artifactId>autoittwo</artifactId>
+			<version>1.18</version>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi</artifactId>
+    		<version>3.9</version>
+		</dependency>
+		   				
 	</dependencies>
-	
 </project>
