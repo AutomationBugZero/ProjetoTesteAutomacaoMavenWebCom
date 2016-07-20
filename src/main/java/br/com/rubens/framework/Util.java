@@ -3,7 +3,6 @@ package br.com.rubens.framework;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -15,9 +14,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -75,13 +75,13 @@ public class Util {
 	 *            <p>
 	 * 
 	 */
-	public void waitForTextToAppear(WebDriver newDriver, String textToAppear, WebElement element,int timeOut, String pathEvidencia) 
+	public void waitForTextToAppear(WebDriver newDriver, String textToAppear, WebElement element,int timeOut, String pathEvidencia,  String nameEvidencia) 
 	{
 		try{
 			WebDriverWait wait = new WebDriverWait(newDriver,timeOut);
 			wait.until(ExpectedConditions.textToBePresentInElement(element, textToAppear));}
 		catch(Exception e){
-			takeScreenshot(newDriver,pathEvidencia);
+			takeScreenshot(newDriver, pathEvidencia, nameEvidencia);
 			Assert.fail();
 		}
 	}
@@ -97,14 +97,14 @@ public class Util {
 	 * 			  <b>timeOut</b> - Valor de time-Out para para validação
 	 *            <p>
 	 */
-	public void waitForElement(WebDriver newDriver, By by, int timeOut, String pathEvidencia) 
+	public void waitForElement(WebDriver newDriver, By by, int timeOut, String pathEvidencia , String nameEvidencia) 
 	{
 		try{
 			WebDriverWait wait = new WebDriverWait(newDriver,timeOut);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 		}
 	   catch(Exception e){
-		   takeScreenshot(newDriver,pathEvidencia);
+		   takeScreenshot(newDriver, pathEvidencia, nameEvidencia);
 			Assert.fail();
 	   }
 	}
@@ -112,14 +112,28 @@ public class Util {
      * Método para capturar screenshot
      * @param fileName - Nome do arquivo
      */
-    public void takeScreenshot(WebDriver newDriver, String fileName){
+    public void takeScreenshot(WebDriver newDriver, String pathEvidencia, String nameEvidencia){
     	 File scrFile = ((TakesScreenshot)newDriver).getScreenshotAs(OutputType.FILE);
-         Date data = new Date();
+    	 
          try {
-             FileUtils.copyFile(scrFile, new File(fileName+ data.getTime()+".jpg"),false);
+             FileUtils.copyFile(scrFile, new File(".\\" + pathEvidencia + "\\"  + nameEvidencia + "_"+ GetDate()+"_"+ GetTime()+".jpg"),false);
          } catch (IOException e) {
              e.printStackTrace();
          } 
+    }
+    
+    public String GetDate(){
+    	
+    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	Date date = new Date();
+    	return dateFormat.format(date).replace("/", "");
+    }
+    
+    public String GetTime(){
+    	
+    	DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+    	Date date = new Date();
+    	return dateFormat.format(date).replace(":", "");
     }
 	
 }

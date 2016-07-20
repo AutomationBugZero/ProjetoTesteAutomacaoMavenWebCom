@@ -5,13 +5,16 @@ package br.com.rubens.page;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+
 import br.com.rubens.framework.Util;
 import br.com.rubens.interfaces.ISeleniumUtils;
 
@@ -47,18 +50,23 @@ public class LoginPageTest implements ISeleniumUtils {
 	}
 
 	public void LogarPageLogin(String UserName, String Pass) {
-		MenuPrincipalPageTest menu=new MenuPrincipalPageTest();
 		Util util=new Util();
+		
+		String data1 = util.GetTime();
+		System.out.println(data1);
+		
+		MenuPrincipalPageTest menu=new MenuPrincipalPageTest();
+		
 
 		LoginPageTest login=new LoginPageTest();			
 		
-		util.waitForElement(webDriver, menu.linkSair,10,".\\Evidencia\\Print_erro");
+		util.waitForElement(webDriver, username,10,"Evidencia","Acessa_Pagina_do_Sistema_Erro");
 					
 		login.TypeUserName(UserName);
 		login.TypePassword(Pass);
 		login.ClickonLoginButton();
 			
-		util.waitForTextToAppear(webDriver, "Sair", webDriver.findElement(menu.linkSair),10,".\\Evidencia\\Print_erro");
+		util.waitForTextToAppear(webDriver, "Rubens", webDriver.findElement(menu.linkSair),10,"Evidencia","Acesso_Menu_Principal_Erro");
 			
 	}	
 }

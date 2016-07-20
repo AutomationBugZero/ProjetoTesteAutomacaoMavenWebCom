@@ -4,6 +4,7 @@
 package br.rubens.teste;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -25,7 +26,7 @@ public class VerifyWebComLogin implements ISeleniumUtils {
 	public WebDriver webDriver = driver;
 
 	@Test(priority = 1, description = "Realiza o login na aplicação", groups = "domain")
-	public void VerifyValidLogin() throws IOException, InterruptedException {
+	public void VerifyValidLogin() throws IOException, InterruptedException, ParseException {
 		Util util = new Util();
 		String[] dados = util.GetDataTable(".\\DataTable\\DataTabe.xls", 3);
 
