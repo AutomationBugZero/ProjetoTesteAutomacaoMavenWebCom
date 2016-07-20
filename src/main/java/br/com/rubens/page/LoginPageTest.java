@@ -51,10 +51,10 @@ public class LoginPageTest implements ISeleniumUtils {
 		util.waitForElement(webDriver, username,10,"Evidencia","Acessa_Pagina_do_Sistema_Erro");
 					
 		login.TypeUserName(UserName);
-		login.TypePassword(Pass);
+		login.TypePassword(Pass); 
 		login.ClickonLoginButton();
 			
-		util.waitForTextToAppear(webDriver, "Sair", webDriver.findElement(menu.linkSair),10,"Evidencia","Acesso_Menu_Principal_Erro");
+		util.waitForTextToAppear(webDriver, "R", webDriver.findElement(menu.linkSair),10,"Evidencia","Acesso_Menu_Principal_Erro");
 			
 	}	
 }
