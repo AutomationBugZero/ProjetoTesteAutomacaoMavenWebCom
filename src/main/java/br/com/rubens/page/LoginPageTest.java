@@ -52,7 +52,7 @@ public class LoginPageTest implements ISeleniumUtils {
 
 		LoginPageTest login=new LoginPageTest();			
 		
-		util.waitForElement(webDriver, username,10,".\\Evidencia\\Print_erro");
+		util.waitForElement(webDriver, menu.linkSair,10,".\\Evidencia\\Print_erro");
 					
 		login.TypeUserName(UserName);
 		login.TypePassword(Pass);
